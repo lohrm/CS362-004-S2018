@@ -661,7 +661,7 @@ int smithyEffect(int currentPlayer, struct gameState *state, int handPos){
 	}
 			
       //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 1); //BUG: 1 is passed instead of 0, so card is trashed
       return 0;
 }
 
@@ -669,7 +669,8 @@ int adventurerEffect(int drawntreasure, struct gameState *state, int currentPlay
 
       while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-	  shuffle(currentPlayer, state);
+	  //shuffle(currentPlayer, state);
+	  //BUG: The shuffle function call has been commented out
 	}
 	drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
@@ -695,7 +696,7 @@ int villageEffect(int currentPlayer, struct gameState *state, int handPos){
       drawCard(currentPlayer, state);
 			
       //+2 Actions
-      state->numActions = state->numActions + 2;
+      state->numActions = state->numActions + 1; //BUG: Only adding 1 action instead of two
 			
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -726,7 +727,7 @@ int mineEffect(int currentPlayer, struct gameState *state, int choice1, int choi
 	  return -1;
 	}
 		
-      if (choice2 > treasure_map || choice2 < curse)
+      if (choice2 < treasure_map || choice2 > curse)
 	{
 	  return -1;
 	}
