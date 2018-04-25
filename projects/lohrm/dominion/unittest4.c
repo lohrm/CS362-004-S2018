@@ -19,7 +19,7 @@ void test_gainCard(){
 	int original_hand = state.handCount[currentPlayer];
 	int original_discard = state.discardCount[currentPlayer];
 
-	printf("Testing getCard():\n");
+	printf("Testing gainCard():\n");
 
 	printf("Adding a gold card to the discard deck\n");
 

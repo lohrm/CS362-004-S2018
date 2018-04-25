@@ -1,0 +1,121 @@
+        -:    0:Source:unittest4.c
+        -:    0:Graph:unittest4.gcno
+        -:    0:Data:unittest4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include "rngs.h"
+        -:    4:#include <stdio.h>
+        -:    5:#include <math.h>
+        -:    6:#include <stdlib.h>
+        -:    7:
+function test_gainCard called 1 returned 100% blocks executed 87%
+        1:    8:void test_gainCard(){
+        -:    9:
+        -:   10:	struct gameState state;
+        -:   11:
+        1:   12:	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
+        -:   13:
+        1:   14:	initializeGame(2, k, 1, &state);
+call    0 returned 100%
+        -:   15:
+        1:   16:	int currentPlayer = whoseTurn(&state);
+call    0 returned 100%
+        -:   17:
+        1:   18:	int original_deck = state.deckCount[currentPlayer];
+        1:   19:	int original_hand = state.handCount[currentPlayer];
+        1:   20:	int original_discard = state.discardCount[currentPlayer];
+        -:   21:
+        1:   22:	printf("Testing gainCard():\n");
+call    0 returned 100%
+        -:   23:
+        1:   24:	printf("Adding a gold card to the discard deck\n");
+call    0 returned 100%
+        -:   25:
+        -:   26:	// TEST 1
+        1:   27:	gainCard(6, &state, 0, currentPlayer);
+call    0 returned 100%
+        1:   28:	printf("   TEST 1: The card was added to the discard deck\n");
+call    0 returned 100%
+        1:   29:	if((state.discard[currentPlayer][state.discardCount[currentPlayer]-1] == 6) && (state.discardCount[currentPlayer] > original_discard)){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0%
+        1:   30:		printf("\tPASS - The card was added to the discard deck\n");
+call    0 returned 100%
+        -:   31:	}
+        -:   32:	else{
+    #####:   33:		printf("\tFAIL - The card was not added to the discard deck\n");
+call    0 never executed
+        -:   34:	}
+        -:   35:
+        1:   36:	printf("Adding a gold card to the deck\n");
+call    0 returned 100%
+        -:   37:	// TEST 2
+        1:   38:	gainCard(6, &state, 1, currentPlayer);
+call    0 returned 100%
+        1:   39:	printf("   TEST 1: The card was added to the deck\n");
+call    0 returned 100%
+        1:   40:	if((state.deck[currentPlayer][state.deckCount[currentPlayer]-1] == 6) && (state.deckCount[currentPlayer] > original_deck)){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0%
+        1:   41:		printf("\tPASS - The card was added to the deck\n");
+call    0 returned 100%
+        -:   42:	}
+        -:   43:	else{
+    #####:   44:		printf("\tFAIL - The card was not added to the deck\n");
+call    0 never executed
+        -:   45:	}
+        -:   46:
+        1:   47:	printf("Adding a gold card to the player's hand\n");
+call    0 returned 100%
+        -:   48:	// TEST 3
+        1:   49:	gainCard(6, &state, 2, currentPlayer);
+call    0 returned 100%
+        1:   50:	printf("   TEST 3: The card was added to the player's hand\n");
+call    0 returned 100%
+        1:   51:	if((state.hand[currentPlayer][state.handCount[currentPlayer]-1] == 6) && (state.handCount[currentPlayer] > original_hand)){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0%
+        1:   52:		printf("\tPASS - The card was added to the player's hand\n");
+call    0 returned 100%
+        -:   53:	}
+        -:   54:	else{
+    #####:   55:		printf("\tFAIL - The card was not added to the player's hand\n");
+call    0 never executed
+        -:   56:	}
+        -:   57:
+        1:   58:	printf("Trying to add a gold card when there are no gold cards in the supply\n");
+call    0 returned 100%
+        -:   59:	// TEST 4
+        1:   60:	printf("   TEST 4: The gold supply is empty\n");
+call    0 returned 100%
+        1:   61:	state.supplyCount[gold] = 0;
+        1:   62:	if(gainCard(6, &state, 0, currentPlayer) == -1){
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+        1:   63:		printf("\tPASS - The card is not added\n");
+call    0 returned 100%
+        -:   64:	}
+        -:   65:	else{
+    #####:   66:		printf("\tFAIL - The card was mistakenly added\n");
+call    0 never executed
+        -:   67:	}
+        -:   68:	
+        1:   69:}
+        -:   70:
+function main called 1 returned 100% blocks executed 100%
+        1:   71:int main(){
+        -:   72:
+        1:   73:	test_gainCard();
+call    0 returned 100%
+        -:   74:
+        1:   75:	return 0;
+        -:   76:}

@@ -16,6 +16,7 @@ void test_smithy(){
 	int currentPlayer = whoseTurn(&state);
 	int original_deck = state.deckCount[currentPlayer];
 	int original_hand = state.handCount[currentPlayer];
+	int original_played = state.playedCardCount;
 	state.hand[currentPlayer][0] = smithy;
 
 	printf("Testing Smithy:\n");
@@ -36,6 +37,14 @@ void test_smithy(){
 	}
 	else{
 		printf("\tFAIL - 3 cards were not added and smithy was not discarded\n");
+	}
+	// TEST 3
+	printf("   TEST 3: Smity card was added to played cards deck\n");
+	if(state.playedCardCount == original_played+1){
+		printf("\tPASS - Smithy card was added to played cards deck\n");
+	}
+	else{
+		printf("\tFAIL - Smithy card was trashed\n");
 	}
 }
 

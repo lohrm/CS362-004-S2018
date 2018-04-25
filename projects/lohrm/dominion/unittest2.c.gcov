@@ -1,0 +1,120 @@
+        -:    0:Source:unittest2.c
+        -:    0:Graph:unittest2.gcno
+        -:    0:Data:unittest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include "rngs.h"
+        -:    4:#include <stdio.h>
+        -:    5:#include <math.h>
+        -:    6:#include <stdlib.h>
+        -:    7:
+function test_endTurn called 1 returned 100% blocks executed 82%
+        1:    8:void test_endTurn(){
+        -:    9:
+        -:   10:	struct gameState state;
+        -:   11:
+        1:   12:	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
+        -:   13:
+        1:   14:	initializeGame(2, k, 1, &state);
+call    0 returned 100%
+        -:   15:
+        1:   16:	int currentPlayer = whoseTurn(&state);
+call    0 returned 100%
+        -:   17:
+        1:   18:	printf("Testing endTurn():\n");
+call    0 returned 100%
+        -:   19:
+        1:   20:	state.handCount[currentPlayer] = 5;
+        1:   21:	state.discardCount[currentPlayer] = 0;
+        1:   22:	printf("Player 1's turn ends with 5 cards in hand and 0 cards in discard deck\n");
+call    0 returned 100%
+        -:   23:
+        -:   24:	// TEST 1
+        1:   25:	printf("   TEST 1: Player 1's hand is empty\n");
+call    0 returned 100%
+        1:   26:	endTurn(&state);
+call    0 returned 100%
+        1:   27:	if(state.handCount[currentPlayer] == 0){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:   28:		printf("\tPASS - Player 1's hand is empty\n");
+call    0 returned 100%
+        -:   29:	}
+        -:   30:	else{
+    #####:   31:		printf("\tFAIL - Player 1's hand is not empty\n");
+call    0 never executed
+        -:   32:	}
+        -:   33:
+        -:   34:	// TEST 2
+        1:   35:	printf("   TEST 2: Player 1's cards were put in discard deck\n");
+call    0 returned 100%
+        1:   36:	if(state.discardCount[currentPlayer] == 5){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:   37:		printf("\tPASS - All 5 hand cards were put in discard deck\n");
+call    0 returned 100%
+        -:   38:	}
+        -:   39:	else{
+    #####:   40:		printf("\tFAIL - Hand cards were not put in discard deck\n");
+call    0 never executed
+        -:   41:	}
+        -:   42:
+        -:   43:	// TEST 3
+        1:   44:	printf("   TEST 3: It is player 2's turn\n");
+call    0 returned 100%
+        1:   45:	if(state.whoseTurn == currentPlayer+1){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:   46:		printf("\tPASS - It is player 2's turn\n");
+call    0 returned 100%
+        -:   47:	}
+        -:   48:	else{
+    #####:   49:		printf("\tFAIL - It is not player 2's turn\n");
+call    0 never executed
+        -:   50:	}
+        -:   51:
+        1:   52:	printf("Player 2's turn ends\n");
+call    0 returned 100%
+        1:   53:	endTurn(&state);
+call    0 returned 100%
+        -:   54:
+        -:   55:	// TEST 4
+        1:   56:	printf("   TEST 4: It is player 1's turn\n");
+call    0 returned 100%
+        1:   57:	if(state.whoseTurn == currentPlayer){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:   58:		printf("\tPASS - It is player 1's turn\n");
+call    0 returned 100%
+        -:   59:	}
+        -:   60:	else{
+    #####:   61:		printf("\tFAIL - It is not player 1's turn\n");
+call    0 never executed
+        -:   62:	}
+        -:   63:
+        -:   64:	// TEST 5
+        1:   65:	printf("   TEST 5: Player 1's hand is initially empty\n");
+call    0 returned 100%
+        1:   66:	if(state.handCount[currentPlayer] == 0){
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   67:		printf("\tPASS - Player 1's hand is empty\n");
+call    0 never executed
+        -:   68:	}
+        -:   69:	else{
+        1:   70:		printf("\tFAIL - Player 1's hand is not empty\n");
+call    0 returned 100%
+        -:   71:	}
+        1:   72:}
+        -:   73:
+function main called 1 returned 100% blocks executed 100%
+        1:   74:int main(){
+        -:   75:
+        1:   76:	test_endTurn();
+call    0 returned 100%
+        -:   77:
+        1:   78:	return 0;
+        -:   79:
+        -:   80:}

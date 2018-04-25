@@ -1,0 +1,159 @@
+Matthew Lohr - CS 362 Assignment 3 - Unit test resulsts
+
+unittest1.c:
+Testing isGameOver():
+   TEST 1: Initial card supply
+	PASS - Game is not over
+   TEST 2: 0 Province cards
+	PASS - Game is over
+   TEST 3: 1 Province card, two decks empty
+	PASS - Game is not over
+   TEST 4: 1 Province card, Three decks empty
+	PASS - Game is over
+File 'unittest1.c'
+Lines executed:86.21% of 29
+Branches executed:100.00% of 8
+Taken at least once:50.00% of 8
+Calls executed:78.95% of 19
+Creating 'unittest1.c.gcov'
+
+
+unittest2.c:
+Testing endTurn():
+Player 1's turn ends with 5 cards in hand and 0 cards in discard deck
+   TEST 1: Player 1's hand is empty
+	PASS - Player 1's hand is empty
+   TEST 2: Player 1's cards were put in discard deck
+	PASS - All 5 hand cards were put in discard deck
+   TEST 3: It is player 2's turn
+	PASS - It is player 2's turn
+Player 2's turn ends
+   TEST 4: It is player 1's turn
+	PASS - It is player 1's turn
+   TEST 5: Player 1's hand is initially empty
+	FAIL - Player 1's hand is not empty
+File 'unittest2.c'
+Lines executed:85.71% of 35
+Branches executed:100.00% of 10
+Taken at least once:50.00% of 10
+Calls executed:78.26% of 23
+Creating 'unittest2.c.gcov'
+
+
+unittest3.c:
+Testing discardCard():
+Discarding gold, handPos=2, from player's hand. The card is trashed
+   TEST 1: Card was not added to played cards pile
+	PASS - Card was not added to played cards pile
+   TEST 2: Discarded card was replaced by last card in hand
+	PASS - Card was replaced by last card
+Discarding council_room, last card in hand from player's hand. The card is trashed
+   TEST 3: Player's hand count is reduced
+	PASS - Hand was reduced
+Discarding copper, the only card in the player's hand. The card is not trashed
+   TEST 4: The card was put in the played cards pile
+	PASS - The card was put in the played cards pile
+   TEST 5: The player's hand is empty
+	PASS - The player's hand is empty
+File 'unittest3.c'
+Lines executed:89.13% of 46
+Branches executed:100.00% of 12
+Taken at least once:58.33% of 12
+Calls executed:81.48% of 27
+Creating 'unittest3.c.gcov'
+
+
+unittest4.c:
+Testing gainCard():
+Adding a gold card to the discard deck
+   TEST 1: The card was added to the discard deck
+	PASS - The card was added to the discard deck
+Adding a gold card to the deck
+   TEST 1: The card was added to the deck
+	PASS - The card was added to the deck
+Adding a gold card to the player's hand
+   TEST 3: The card was added to the player's hand
+	PASS - The card was added to the player's hand
+Trying to add a gold card when there are no gold cards in the supply
+   TEST 4: The gold supply is empty
+	PASS - The card is not added
+File 'unittest4.c'
+Lines executed:88.89% of 36
+Branches executed:100.00% of 14
+Taken at least once:50.00% of 14
+Calls executed:83.33% of 24
+Creating 'unittest4.c.gcov'
+
+
+cardtest1.c:
+Testing Smithy:
+   TEST 1: 3 cards were taken from the deck
+	PASS - 3 cards were taken
+   TEST 2: 3 cards were added to the player's hand, and the played card was discarded
+	PASS - 3 cards were added and smithy was discarded
+   TEST 3: Smity card was added to played cards deck
+	FAIL - Smithy card was trashed
+File 'cardtest1.c'
+Lines executed:88.46% of 26
+Branches executed:100.00% of 6
+Taken at least once:50.00% of 6
+Calls executed:78.57% of 14
+Creating 'cardtest1.c.gcov'
+
+
+cardtest2.c:
+Testing Adventurer:
+   TEST 1: Player's hand only increases by 2
+	PASS - 2 cards were added to player's hand
+   TEST 2: No treasure cards were discarded when drawn
+	PASS - Treasure cards were not discarded
+   TEST 3: Only treasure cards were added to player's hand
+	PASS - Only treasure cards were added to player's hand
+File 'cardtest2.c'
+Lines executed:77.14% of 35
+Branches executed:54.55% of 22
+Taken at least once:31.82% of 22
+Calls executed:78.57% of 14
+Creating 'cardtest2.c.gcov'
+
+
+cardtest3.c:
+Testing Great Hall:
+   TEST 1: Player drew a card
+	PASS - 1 card was added to player's hand
+   TEST 2: Player gained one action
+	PASS - 1 action was added to player
+   TEST 3: Great hall card was discarded into the played cards deck
+	PASS - Great hall card was discarded and not trashed
+File 'cardtest3.c'
+Lines executed:88.00% of 25
+Branches executed:100.00% of 6
+Taken at least once:50.00% of 6
+Calls executed:78.57% of 14
+Creating 'cardtest3.c.gcov'
+
+
+cardtest4.c:
+Testing Village:
+   TEST 1: Player drew a card
+	PASS - 1 card was added to player's hand
+   TEST 2: Player gained two action
+	FAIL - 2 actions were not added to player
+   TEST 3: Village card was discarded into the played cards deck
+	PASS - Village card was discarded and not trashed
+File 'cardtest4.c'
+Lines executed:88.00% of 25
+Branches executed:100.00% of 6
+Taken at least once:50.00% of 6
+Calls executed:78.57% of 14
+Creating 'cardtest4.c.gcov'
+
+
+total dominion coverage:
+File 'dominion.c'
+Lines executed:32.68% of 557
+Branches executed:29.64% of 415
+Taken at least once:21.69% of 415
+Calls executed:23.40% of 94
+Creating 'dominion.c.gcov'
+
