@@ -79,6 +79,24 @@ unittestresults.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c
 	echo -e "\ntotal dominion coverage:" >> unittestresults.out
 	gcov -b dominion.c >> unittestresults.out
 
+randomtestresults.out: randomtest1.c randomtest2.c randomtestadventurer.c
+	echo "Matthew Lohr - CS 362 Assignment 4 - Random test resulsts" > randomtestresults.out
+	
+	echo -e "\nrandomtest1.c:" >> randomtestresults.out
+	gcc -o randomtest1 -g randomtest1.c dominion.o rngs.o $(CFLAGS)
+	randomtest1 >> randomtestresults.out
+	gcov -b randomtest1.c >> randomtestresults.out
+	
+	echo -e "\nrandomtest2.c:" >> randomtestresults.out
+	gcc -o randomtest2 -g randomtest2.c dominion.o rngs.o $(CFLAGS)
+	randomtest2 >> randomtestresults.out
+	gcov -b randomtest2.c >> randomtestresults.out
+	
+	echo -e "\nrandomtestadventurer.c:" >> randomtestresults.out
+	gcc -o randomtestadventurer -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+	randomtestadventurer >> randomtestresults.out
+	gcov -b randomtestadventurer.c >> randomtestresults.out
+	
 all: playdom player 
 
 clean:
