@@ -79,8 +79,9 @@ unittestresults.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c
 	echo -e "\ntotal dominion coverage:" >> unittestresults.out
 	gcov -b dominion.c >> unittestresults.out
 
-randomtestresults.out: randomtest1.c randomtest2.c randomtestadventurer.c
+randomtestresults.out: randomtest1.c randomtest2.c randomtestadventurer.c dominion.o rngs.o
 	echo "Matthew Lohr - CS 362 Assignment 4 - Random test resulsts" > randomtestresults.out
+	echo -e "~ = PASS, ! = FAIL" >> randomtestresults.out
 	
 	echo -e "\nrandomtest1.c:" >> randomtestresults.out
 	gcc -o randomtest1 -g randomtest1.c dominion.o rngs.o $(CFLAGS)
@@ -100,4 +101,4 @@ randomtestresults.out: randomtest1.c randomtest2.c randomtestadventurer.c
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtest1 randomtest2 randomtestadventurer *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
