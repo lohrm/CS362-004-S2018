@@ -42,8 +42,9 @@ void random_test_adventurer(){
 		z = 0; fail = 0;
 		state.numPlayers = ((int)(Random()*3))+2;
 		currentPlayer = (int)(Random()*(state.numPlayers+1));
+		state.whoseTurn = currentPlayer;
 		generate_randoms(&state, currentPlayer, &og_hand, &og_discard);
-		adventurerEffect(0, &state, currentPlayer, cardDrawn, temphand, z);
+		cardEffect(adventurer, 0, 0, 0, &state, 0, NULL);
 		for(j = og_discard; j < state.discardCount[currentPlayer]; j++){
 			if(((state.discard[currentPlayer][j]) == copper) || ((state.discard[currentPlayer][j]) == silver) || ((state.discard[currentPlayer][j]) == gold)){
 				fail = 1;

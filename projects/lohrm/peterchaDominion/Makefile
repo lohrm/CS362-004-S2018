@@ -79,6 +79,28 @@ randomtestcard1.out: randomtestcard1.c dominion.o rngs.o
 	echo "Matthew Lohr - CS 362 Assignment 4 - Random test card 1 results" > randomtestcard1.out
 	echo -e "~ = PASS, ! = FAIL" >> randomtestcard1.out
 	
+	echo -e "\nrandomtest1.c:" >> randomtestcard1.out
+	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+	randomtestcard1 >> randomtestcard1.out
+	gcov -b randomtestcard1.c >> randomtestcard1.out
+
+randomtestcard2.out: randomtestcard2.c dominion.o rngs.o
+	echo "Matthew Lohr - CS 362 Assignment 4 - Random test card 2 results" > randomtestcard2.out
+	echo -e "~ = PASS, ! = FAIL" >> randomtestcard2.out
+	
+	echo -e "\nrandomtestcard2.c:" >> randomtestcard2.out
+	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+	randomtestcard2 >> randomtestcard2.out
+	gcov -b randomtestcard2.c >> randomtestcard2.out
+	
+randomtestadventurer.out: randomtestadventurer.c dominion.o rngs.o
+	echo "Matthew Lohr - CS 362 Assignment 4 - Random test adventurer results" > randomtestadventurer.out
+	echo -e "~ = PASS, ! = FAIL" >> randomtestadventurer.out
+	
+	echo -e "\nrandomtestadventurer.c:" >> randomtestadventurer.out
+	gcc -o randomtestadventurer -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+	randomtestadventurer >> randomtestadventurer.out
+	gcov -b randomtestadventurer.c >> randomtestadventurer.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)

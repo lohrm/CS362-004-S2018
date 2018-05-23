@@ -43,9 +43,10 @@ void random_test_smithy(){
 	for(i = 0; i < 2000; i++){
 		state.numPlayers = ((int)(Random()*3))+2;
 		currentPlayer = (int)(Random()*(state.numPlayers+1));
+		state.whoseTurn = currentPlayer;
 		generate_randoms(&state, currentPlayer, &og_hand, &og_deck, &og_played);
 		handPos = (int)(Random()*state.handCount[currentPlayer]);
-		smithyEffect(currentPlayer, &state, handPos);
+		cardEffect(smithy, 0, 0, 0, &state, handPos, NULL);
 		if((state.deckCount[currentPlayer] == og_deck-3) && (state.handCount[currentPlayer] == og_hand+2) && (state.playedCardCount == og_played)){
 			printf("~");
 		}
